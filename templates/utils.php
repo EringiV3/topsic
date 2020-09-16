@@ -45,3 +45,31 @@ function getValuesFromMultiLine(): array
   }
   return $result;
 }
+
+/**
+ * 多次元配列を１次元に平坦化します
+ * @param array $arr
+ * @return array 
+ */
+function array_flatten(array $arr): array
+{
+    $v = [];
+    array_walk_recursive($arr, function($e)use(&$v){$v[] = $e;});
+    return $v;
+}
+
+/**
+ * 引数で受け取った数字の約数を配列で返します
+ * @param int $number
+ * @return array
+ */
+function getDivisor(int $number): array
+{
+    $results = [];
+    for ($i=1; $i <= $number; $i++) { 
+        if ($number % $i === 0) {
+            $results[] = $i;
+        }
+    }
+    return $results;
+}
